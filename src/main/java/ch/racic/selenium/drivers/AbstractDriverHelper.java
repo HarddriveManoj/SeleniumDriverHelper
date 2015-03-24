@@ -7,8 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-abstract class AbstractDriverHelper {
-    private static final String resourcesFolder = "ch.racic.selenium.drivers.resources";
+public abstract class AbstractDriverHelper {
+    protected static final String resourcesFolder = "ch.racic.selenium.drivers.resources";
 
     protected static synchronized File executable(String fileName) throws ExecutableNotFoundException, IOException {
         // Get URL from resources
