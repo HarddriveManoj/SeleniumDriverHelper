@@ -7,21 +7,22 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
+/**
+ * The type Phantom js driver helper.
+ */
 public class PhantomJSDriverHelper extends AbstractDriverHelper {
-    private static File driverServer32, driverServer64, driverServerV2;
-    private static final String exeNameLinux32 = "linux.32.v1.9.8.phantomjs";
-    private static final String exeNameLinux64 = "linux.64.v1.9.8.phantomjs";
-    private static final String exeNameOSX = "osx.v1.9.8.phantomjs";
-    private static final String exeNameWindows = "phantomjs.v1.9.8.exe";
-    private static final String exeNameOSX2 = "osx.v2.0.phantomjs";
-    private static final String exeNameWindows2 = "phantomjs.v2.0.exe";
+    private static File driverServer32, driverServer64;
+    protected static final String exeNameLinux32 = "linux.32.v2.1.1.phantomjs";
+    protected static final String exeNameLinux64 = "linux.64.v2.1.1.phantomjs";
+    protected static final String exeNameOSX = "osx.v2.1.1.phantomjs";
+    protected static final String exeNameWindows = "windows.v2.1.1.phantomjs.exe";
 
     /**
      * Get the 32-Bit executable for the PhantomJS driver server.
      *
      * @return executable file
-     * @throws ExecutableNotFoundException
-     * @throws IOException
+     * @throws ExecutableNotFoundException the executable not found exception
+     * @throws IOException                 the io exception
      */
     public static File executable() throws ExecutableNotFoundException, IOException {
         if (driverServer32 == null) {
@@ -41,35 +42,19 @@ public class PhantomJSDriverHelper extends AbstractDriverHelper {
      * the 32-bit version for all other OS identifiers.
      *
      * @return executable file
-     * @throws ExecutableNotFoundException
-     * @throws IOException
+     * @throws ExecutableNotFoundException the executable not found exception
+     * @throws IOException                 the io exception
      */
     public static File executable64() throws ExecutableNotFoundException, IOException {
-        if (!OS.isFamilyUnix()) return executable();
-        if (driverServer64 == null) {
-            // lazy loading on first access, then reuse
-            driverServer64 = executable(exeNameLinux64);
+        if (!OS.isFamilyUnix()) {
+            return executable();
+        } else {
+            if (driverServer64 == null) {
+                // lazy loading on first access, then reuse
+                driverServer64 = executable(exeNameLinux64);
+            }
+            return driverServer64;
         }
-        return driverServer64;
-    }
-
-    /**
-     * Get the 32-Bit executable for the PhantomJS driver server v.2.0.
-     *
-     * @return executable file
-     * @throws ExecutableNotFoundException
-     * @throws IOException
-     */
-    public static File executableV2() throws ExecutableNotFoundException, IOException {
-        if (driverServerV2 == null) {
-            // lazy loading on first access, then reuse
-            if (OS.isFamilyWindows()) driverServerV2 = executable(exeNameWindows2);
-            else if (OS.isFamilyMac()) driverServerV2 = executable(exeNameOSX2);
-            else
-                throw new ExecutableNotFoundException("There is no PhantomJS version 2.0 driver known for operating system "
-                        + System.getProperty("os.name").toLowerCase(Locale.US));
-        }
-        return driverServerV2;
     }
 
 }
