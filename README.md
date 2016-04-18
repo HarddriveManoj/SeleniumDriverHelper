@@ -9,7 +9,15 @@ PhantomJS helper refers with the version to PhantomJS version, InternetExplorer 
   <version>2.1.1</version>
 </dependency>
 ```
+```
+<dependency>
+  <groupId>ch.racic.selenium</groupId>
+  <artifactId>selenium-driver-helper-internetexplorer</artifactId>
+  <version>2.53.0</version>
+</dependency>
+```
 
+Old Versions:
 ```
 <dependency>
   <groupId>ch.racic.selenium</groupId>
