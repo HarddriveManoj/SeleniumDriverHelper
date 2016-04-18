@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class InternetExplorerDriverHelper extends AbstractDriverHelper {
     private static File driverServer32, driverServer64;
-    private static final String exeName32 = "IEDriverServer32.exe";
-    private static final String exeName64 = "IEDriverServer64.exe";
+    protected static final String exeName32 = "IEDriverServer32.exe";
+    protected static final String exeName64 = "IEDriverServer64.exe";
 
     /**
      * Get the 32-Bit executable for the Internet Explorer driver server. Currently it is advised to use the 32-bit
