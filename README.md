@@ -17,7 +17,7 @@ PhantomJS helper refers with the version to PhantomJS version, InternetExplorer 
 </dependency>
 ```
 
-Old Versions:
+Old Versions that may still serve a use for someone:
 ```
 <dependency>
   <groupId>ch.racic.selenium</groupId>
@@ -25,6 +25,7 @@ Old Versions:
   <version>2.53.0</version>
 </dependency>
 ```
+
 ```
 <dependency>
   <groupId>ch.racic.selenium</groupId>
